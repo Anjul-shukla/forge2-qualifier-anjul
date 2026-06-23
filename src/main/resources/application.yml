@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/forge2
+    username: forge_user
+    password: password123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    user:
+      name: admin
+      password: admin
+  ai:
+    ollama:
+      base-url: http://127.0.0.1:11434
+      model: qwen2.5-coder:7b
+      timeout: 30s
+
+jwt:
+  secret: "replace_this_with_a_strong_secret"
+  expirationMs: 86400000
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    com.forge: DEBUG
